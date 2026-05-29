@@ -526,6 +526,17 @@ footer {
 .col-4 { grid-column: span 4; }
 .col-3 { grid-column: span 3; }
 
+@media (max-width: 1100px) {
+  .nav-tab {
+    padding: 0.5rem 0.7rem !important;
+    font-size: 0.8rem !important;
+    gap: 0.3rem !important;
+  }
+  .nav-tabs {
+    gap: 0.3rem !important;
+  }
+}
+
 @media (max-width: 1024px) {
   .col-8, .col-6, .col-4, .col-3 {
     grid-column: span 6;
