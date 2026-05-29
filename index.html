@@ -126,7 +126,7 @@
               </svg>
             </div>
             <div class="stat-info">
-              <span class="stat-num" id="statPeñasCount">3</span>
+              <span class="stat-num" id="statPenasCount">3</span>
               <span class="stat-label">Peñas Activas</span>
             </div>
           </div>
@@ -235,7 +235,7 @@
               </h3>
             </div>
             
-            <div class="active-penaship" id="dashboardActivePeñasList">
+            <div class="active-penaship" id="dashboardActivePenasList">
               <!-- Rendered dynamically -->
             </div>
             
@@ -310,11 +310,11 @@
               Registra tu peña oficial en el portal de desplazamientos. Al registrar tu peña, podrás publicar asignaciones de entradas para tus socios en partidos fuera de casa y enviar solicitudes de presupuestos conjuntos a las agencias autorizadas de Oviedo.
             </p>
 
-            <form id="newPeñaForm" onsubmit="app.handlePeñaRegistration(event)">
+            <form id="newPenaForm" onsubmit="app.handlePeñaRegistration(event)">
               <div class="form-row">
                 <div class="form-group">
-                  <label for="peñaName">Nombre de la Peña *</label>
-                  <input type="text" class="form-control" id="peñaName" placeholder="Ej: Peña Azul Vetusta" required>
+                  <label for="penaName">Nombre de la Peña *</label>
+                  <input type="text" class="form-control" id="penaName" placeholder="Ej: Peña Azul Vetusta" required>
                 </div>
                 
                 <div class="form-group">
@@ -331,31 +331,31 @@
 
               <div class="form-row">
                 <div class="form-group">
-                  <label for="peñaYear">Año de Fundación *</label>
-                  <input type="number" class="form-control" id="peñaYear" min="1926" max="2026" value="2025" required>
+                  <label for="penaYear">Año de Fundación *</label>
+                  <input type="number" class="form-control" id="penaYear" min="1926" max="2026" value="2025" required>
                 </div>
                 
                 <div class="form-group">
-                  <label for="peñaSede">Sede (Dirección / Ciudad) *</label>
-                  <input type="text" class="form-control" id="peñaSede" placeholder="Ej: Sidrería El Desarme, Oviedo" required>
+                  <label for="penaSede">Sede (Dirección / Ciudad) *</label>
+                  <input type="text" class="form-control" id="penaSede" placeholder="Ej: Sidrería El Desarme, Oviedo" required>
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="form-group">
-                  <label for="peñaPresident">Presidente de la Peña *</label>
-                  <input type="text" class="form-control" id="peñaPresident" placeholder="Ej: Nacho Fernández" required>
+                  <label for="penaPresident">Presidente de la Peña *</label>
+                  <input type="text" class="form-control" id="penaPresident" placeholder="Ej: Nacho Fernández" required>
                 </div>
                 
                 <div class="form-group">
-                  <label for="peñaMembers">Número de Socios Activos *</label>
-                  <input type="number" class="form-control" id="peñaMembers" min="1" value="120" required>
+                  <label for="penaMembers">Número de Socios Activos *</label>
+                  <input type="number" class="form-control" id="penaMembers" min="1" value="120" required>
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="peñaEmail">Email de Contacto Oficial *</label>
-                <input type="email" class="form-control" id="peñaEmail" placeholder="Ej: contacto@peñavetusta.com" required>
+                <label for="penaEmail">Email de Contacto Oficial *</label>
+                <input type="email" class="form-control" id="penaEmail" placeholder="Ej: contacto@peñavetusta.com" required>
               </div>
 
               <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem;">
@@ -417,8 +417,8 @@
 
           <form id="publishTicketsForm" onsubmit="app.handleTicketPublish(event)">
             <div class="form-group">
-              <label for="publishPeñaSelector">Selecciona tu Peña Oficial *</label>
-              <select class="form-control" id="publishPeñaSelector" required>
+              <label for="publishPenaSelector">Selecciona tu Peña Oficial *</label>
+              <select class="form-control" id="publishPenaSelector" required>
                 <!-- Rendered dynamically -->
               </select>
             </div>
@@ -476,8 +476,8 @@
 
           <!-- Selection of active Peña to filter listings -->
           <div class="form-group" style="max-width: 400px; margin-bottom: 2rem;">
-            <label for="shopPeñaFilter">Selecciona tu Peña para ver tus Entradas Asignadas</label>
-            <select class="form-control" id="shopPeñaFilter" onchange="app.renderShopListings()">
+            <label for="shopPenaFilter">Selecciona tu Peña para ver tus Entradas Asignadas</label>
+            <select class="form-control" id="shopPenaFilter" onchange="app.renderShopListings()">
               <!-- Dynamic -->
             </select>
           </div>
@@ -628,7 +628,7 @@
 
           <div class="progress-steps">
             <div class="progress-step done" id="step1">✓ Generando itinerario de viaje</div>
-            <div class="progress-step active" id="step2">Calculando distancias y peajes</div>
+            <div class="progress-step active" id="step2">Calculando distancias y penajes</div>
             <div class="progress-step" id="step3">Enviando desglose detallado a la agencia</div>
             <div class="progress-step" id="step4">Confirmando recepción de cotización</div>
           </div>
@@ -814,7 +814,7 @@
                 </div>
                 <div class="boarding-meta">
                   <span class="boarding-meta-label">Peña Oficial</span>
-                  <span class="boarding-meta-value" id="boardingPeñaName">Peña Vetusta</span>
+                  <span class="boarding-meta-value" id="boardingPenaName">Peña Vetusta</span>
                 </div>
                 <div class="boarding-meta">
                   <span class="boarding-meta-label">Partido Destino</span>

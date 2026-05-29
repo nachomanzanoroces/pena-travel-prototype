@@ -1468,3 +1468,230 @@ footer {
   0%, 100% { border-color: var(--glass-border); }
   50% { border-color: var(--color-accent); }
 }
+
+/* ==========================================================================
+   RESPONSIVE NAVIGATION & UI OPTIMIZATION (MOBILE & TABLET)
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  /* Optimize container sizes for tablets */
+  main {
+    padding: 1.5rem 1.25rem;
+  }
+  
+  .hero {
+    padding: 2.25rem;
+  }
+  
+  .hero h2 {
+    font-size: 2.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Prevent content overlap with bottom sticky navigation bar */
+  body {
+    padding-bottom: 78px;
+  }
+
+  /* Make top header a slim row showing only Logo and User Badge */
+  .header-content {
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.25rem !important;
+    gap: 0 !important;
+  }
+
+  .logo-title h1 {
+    font-size: 1.1rem;
+  }
+
+  .logo-title span {
+    font-size: 0.65rem;
+  }
+
+  .logo-section svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .user-badge {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .user-avatar {
+    width: 22px;
+    height: 22px;
+    font-size: 0.7rem;
+  }
+
+  /* Transform top navigation into a premium, sticky bottom navigation bar */
+  .nav-tabs {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: rgba(8, 12, 20, 0.95);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-top: 1px solid var(--glass-border);
+    padding: 0.5rem 0.25rem;
+    margin: 0;
+    gap: 0.25rem;
+    display: flex;
+    justify-content: space-around;
+    overflow-x: visible;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.6);
+  }
+
+  /* Style tabs vertically on mobile with icon-on-top */
+  .nav-tab {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    padding: 0.4rem 0.1rem;
+    font-size: 0.62rem;
+    font-weight: 500;
+    border-radius: var(--border-radius-sm);
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: var(--color-text-muted);
+    transition: var(--transition-fast);
+  }
+
+  .nav-tab svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .nav-tab:hover {
+    color: var(--color-text-main);
+  }
+
+  /* Custom active states for mobile bottom nav (glowing gold accent) */
+  .nav-tab.active {
+    color: var(--color-accent) !important;
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.25);
+  }
+
+  .nav-tab.active svg {
+    color: var(--color-accent) !important;
+    transform: translateY(-2px) scale(1.05);
+    filter: drop-shadow(0 0 6px var(--color-accent));
+  }
+  
+  /* Table touch scrolls */
+  .calendar-table-wrapper {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 500px) {
+  /* Micro paddings for mobile phones */
+  main {
+    padding: 1rem 0.75rem;
+  }
+
+  .card {
+    padding: 1.1rem !important;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 1rem;
+  }
+
+  .hero {
+    padding: 1.75rem 1.25rem !important;
+    border-radius: var(--border-radius-md);
+  }
+
+  .hero h2 {
+    font-size: 1.6rem !important;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  /* Adjust grid columns for statistics */
+  .stat-bar {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+    margin-bottom: 1.25rem;
+  }
+
+  .stat-widget {
+    padding: 0.75rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .stat-icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .stat-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .stat-num {
+    font-size: 1.35rem;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+  }
+
+  /* Simplify trip vs panel on small mobiles */
+  .vs-block {
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  .team-badge-large {
+    width: 80px;
+  }
+
+  .team-logo-placeholder {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+
+  .vs-divider {
+    font-size: 1.2rem;
+  }
+
+  /* Form row column changes */
+  .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem;
+  }
+
+  /* Adjust budget calculator columns */
+  .compare-right {
+    padding: 0.9rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .compare-price-section {
+    text-align: left;
+    width: 100%;
+    border-top: 1px dashed rgba(255, 255, 255, 0.05);
+    padding-top: 0.5rem;
+  }
+
+  .compare-left {
+    width: 65px;
+    padding: 0.9rem;
+  }
+}
+

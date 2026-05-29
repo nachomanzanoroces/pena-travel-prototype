@@ -218,7 +218,7 @@ const MATCHES_2025 = [
 ];
 
 // Initial default registered Peñas (fan clubs)
-const DEFAULT_PEÑAS = [
+const DEFAULT_PENAS = [
   {
     id: "pena-vetusta",
     name: "Peña Azul Vetusta",
@@ -290,7 +290,7 @@ const DEFAULT_LISTINGS = [
 
 class PenaTravelApp {
   constructor() {
-    this.peñas = [];
+    this.penas = [];
     this.listings = [];
     this.bookings = [];
     this.agencyRequests = [];
@@ -350,11 +350,11 @@ class PenaTravelApp {
    */
   loadState() {
     // Peñas
-    if (localStorage.getItem("OVIEDO_PEÑAS")) {
-      this.peñas = JSON.parse(localStorage.getItem("OVIEDO_PEÑAS"));
+    if (localStorage.getItem("OVIEDO_PENAS")) {
+      this.penas = JSON.parse(localStorage.getItem("OVIEDO_PENAS"));
     } else {
-      this.peñas = [...DEFAULT_PEÑAS];
-      localStorage.setItem("OVIEDO_PEÑAS", JSON.stringify(this.peñas));
+      this.penas = [...DEFAULT_PENAS];
+      localStorage.setItem("OVIEDO_PENAS", JSON.stringify(this.penas));
     }
 
     // Listings
@@ -431,16 +431,16 @@ class PenaTravelApp {
    */
   populateSelectors() {
     // 1. Publish Selector (Peña)
-    const pubPeñaSel = document.getElementById("publishPeñaSelector");
-    const shopPeñaFil = document.getElementById("shopPeñaFilter");
+    const pubPeñaSel = document.getElementById("publishPenaSelector");
+    const shopPeñaFil = document.getElementById("shopPenaFilter");
     
     if (pubPeñaSel) {
-      pubPeñaSel.innerHTML = this.peñas.map(p => `<option value="${p.id}">${p.name} (Pres: ${p.president})</option>`).join("");
+      pubPeñaSel.innerHTML = this.penas.map(p => `<option value="${p.id}">${p.name} (Pres: ${p.president})</option>`).join("");
     }
 
     if (shopPeñaFil) {
       shopPeñaFil.innerHTML = `<option value="all">Todas las Peñas</option>` + 
-        this.peñas.map(p => `<option value="${p.id}">${p.name}</option>`).join("");
+        this.penas.map(p => `<option value="${p.id}">${p.name}</option>`).join("");
     }
 
     // 2. Publish Selector (Match)
@@ -481,7 +481,7 @@ class PenaTravelApp {
    */
   renderDashboard() {
     // Count stats
-    document.getElementById("statPeñasCount").textContent = this.peñas.length;
+    document.getElementById("statPenasCount").textContent = this.penas.length;
     
     const activeTicketsCount = this.listings.reduce((sum, item) => sum + (item.totalTickets - item.sold), 0);
     document.getElementById("statActiveTickets").textContent = activeTicketsCount;
@@ -529,9 +529,9 @@ class PenaTravelApp {
     };
 
     // Draw active Peñas list on side panel
-    const penaListContainer = document.getElementById("dashboardActivePeñasList");
+    const penaListContainer = document.getElementById("dashboardActivePenasList");
     if (penaListContainer) {
-      penaListContainer.innerHTML = this.peñas.map(p => `
+      penaListContainer.innerHTML = this.penas.map(p => `
         <div class="pena-list-item">
           <div class="pena-info">
             <div class="pena-avatar">${p.avatar}</div>
@@ -674,12 +674,12 @@ class PenaTravelApp {
   handlePeñaRegistration(event) {
     event.preventDefault();
 
-    const name = document.getElementById("peñaName").value.trim();
-    const year = parseInt(document.getElementById("peñaYear").value);
-    const sede = document.getElementById("peñaSede").value.trim();
-    const president = document.getElementById("peñaPresident").value.trim();
-    const members = parseInt(document.getElementById("peñaMembers").value);
-    const email = document.getElementById("peñaEmail").value.trim();
+    const name = document.getElementById("penaName").value.trim();
+    const year = parseInt(document.getElementById("penaYear").value);
+    const sede = document.getElementById("penaSede").value.trim();
+    const president = document.getElementById("penaPresident").value.trim();
+    const members = parseInt(document.getElementById("penaMembers").value);
+    const email = document.getElementById("penaEmail").value.trim();
     
     // Create new object
     const newPeña = {
@@ -694,11 +694,11 @@ class PenaTravelApp {
     };
 
     // Save to list
-    this.peñas.push(newPeña);
-    this.saveState("OVIEDO_PEÑAS", this.peñas);
+    this.penas.push(newPeña);
+    this.saveState("OVIEDO_PENAS", this.penas);
 
     // Reset Form
-    document.getElementById("newPeñaForm").reset();
+    document.getElementById("newPenaForm").reset();
     
     // Trigger selector updates
     this.populateSelectors();
@@ -716,7 +716,7 @@ class PenaTravelApp {
   handleTicketPublish(event) {
     event.preventDefault();
 
-    const penaId = document.getElementById("publishPeñaSelector").value;
+    const penaId = document.getElementById("publishPenaSelector").value;
     const matchId = document.getElementById("publishMatchSelector").value;
     const totalTickets = parseInt(document.getElementById("publishTicketCount").value);
     const price = parseInt(document.getElementById("publishTicketPrice").value);
@@ -749,7 +749,7 @@ class PenaTravelApp {
    */
   renderShopListings() {
     const shopGrid = document.getElementById("shopGrid");
-    const filterPenaId = document.getElementById("shopPeñaFilter").value;
+    const filterPenaId = document.getElementById("shopPenaFilter").value;
     const countBadge = document.getElementById("activeListingsCount");
 
     if (!shopGrid) return;
@@ -774,7 +774,7 @@ class PenaTravelApp {
     }
 
     shopGrid.innerHTML = filteredListings.map(l => {
-      const peña = this.peñas.find(p => p.id === l.penaId) || { name: "Peña Desconocida" };
+      const peña = this.penas.find(p => p.id === l.penaId) || { name: "Peña Desconocida" };
       const match = MATCHES_2025.find(m => m.id === l.matchId) || { opponent: "Rival", city: "Ciudad", date: "Fecha" };
       const remaining = l.totalTickets - l.sold;
       
@@ -949,7 +949,7 @@ class PenaTravelApp {
     
     const listing = this.listings.find(l => l.id === this.activeListingForPayment.id);
     const match = MATCHES_2025.find(m => m.id === listing.matchId);
-    const peña = this.peñas.find(p => p.id === listing.penaId);
+    const peña = this.penas.find(p => p.id === listing.penaId);
 
     // 1. Subtract tickets from inventory
     listing.sold += count;
@@ -997,7 +997,7 @@ class PenaTravelApp {
     document.getElementById("boardingDestCode").textContent = booking.destinationCode;
     document.getElementById("boardingDestCity").textContent = booking.destinationCity;
     document.getElementById("boardingSocioName").textContent = booking.socioName;
-    document.getElementById("boardingPeñaName").textContent = booking.penaName;
+    document.getElementById("boardingPenaName").textContent = booking.penaName;
     document.getElementById("boardingMatchName").textContent = `${booking.matchOpponent} vs Real Oviedo`;
     document.getElementById("boardingMatchDate").textContent = booking.matchDate;
     document.getElementById("boardingTicketCount").textContent = `${booking.ticketsBought} Entrada${booking.ticketsBought > 1 ? 's' : ''}`;
@@ -1214,7 +1214,7 @@ class PenaTravelApp {
           <div class="compare-right">
             <div class="compare-details">
               <h4>Coche Compartido</h4>
-              <p>Basado en combustible, peajes y dividiendo gastos entre ${travelers} socios.</p>
+              <p>Basado en combustible, penajes y dividiendo gastos entre ${travelers} socios.</p>
               ${recCar ? '<span class="badge badge-gold" style="font-size:0.65rem; margin-top:0.25rem;">✔ Recomendado para Cercanos</span>' : ''}
             </div>
             <div class="compare-price-section">
@@ -1320,7 +1320,7 @@ class PenaTravelApp {
     setTimeout(() => {
       step1.className = "progress-step done";
       step2.className = "progress-step active";
-      statusText.textContent = "Verificando itinerario de peaje y combustible de Oviedo a " + match.city + "...";
+      statusText.textContent = "Verificando itinerario de penaje y combustible de Oviedo a " + match.city + "...";
       
       setTimeout(() => {
         step2.className = "progress-step done";
