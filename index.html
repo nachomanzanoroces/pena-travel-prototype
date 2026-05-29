@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PeñaViajes Oviedo - Portal de Viajes para Peñas del Real Oviedo</title>
+  <meta name="description" content="Prototipo web para la gestión de viajes, entradas y presupuestos de las peñas oficiales del Real Oviedo en sus desplazamientos en 2025.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- HEADER -->
+    <header>
+      <div class="header-content">
+        <div class="logo-section">
+          <!-- Real Oviedo Style Crest/Icon SVG -->
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="crestGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#0054A6" />
+                <stop offset="100%" stop-color="#002D5C" />
+              </linearGradient>
+              <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFF099" />
+                <stop offset="100%" stop-color="#D4AF37" />
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="46" fill="url(#crestGrad)" stroke="url(#goldGrad)" stroke-width="4"/>
+            <!-- Crown elements on top -->
+            <path d="M35,32 L40,24 L50,28 L60,24 L65,32 Z" fill="url(#goldGrad)" />
+            <circle cx="50" cy="28" r="2.5" fill="#fff" />
+            <circle cx="40" cy="24" r="2" fill="#fff" />
+            <circle cx="60" cy="24" r="2" fill="#fff" />
+            <!-- Inside Logo: Soccer ball & Cross of Victory -->
+            <circle cx="50" cy="58" r="20" fill="none" stroke="#fff" stroke-dasharray="3,3" stroke-width="2" />
+            <!-- Cross of Victory representation -->
+            <path d="M50,42 L50,68 M37,50 L63,50" stroke="url(#goldGrad)" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="50" cy="50" r="4" fill="#0054A6" stroke="url(#goldGrad)" stroke-width="1.5" />
+          </svg>
+          <div class="logo-title">
+            <h1>PeñaViajes Oviedo</h1>
+            <span>Portal de Desplazamientos</span>
+          </div>
+        </div>
+
+        <nav class="nav-tabs" id="mainNav">
+          <button class="nav-tab active" data-tab="dashboard">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z"></path>
+            </svg>
+            Panel
+          </button>
+          
+          <button class="nav-tab" data-tab="calendar">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            Calendario
+          </button>
+
+          <button class="nav-tab" data-tab="registry">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+            </svg>
+            Nueva Peña
+          </button>
+
+          <button class="nav-tab" data-tab="publish">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+            </svg>
+            Publicar Entradas
+          </button>
+
+          <button class="nav-tab" data-tab="shop">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path>
+            </svg>
+            Portal Socios
+          </button>
+
+          <button class="nav-tab" data-tab="agency">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+            </svg>
+            Buscador Agencias
+          </button>
+        </nav>
+
+        <div class="user-badge">
+          <div class="user-avatar">RO</div>
+          <span>Presidente Peña</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN BODY -->
+    <main>
+
+      <!-- 1. DASHBOARD VIEW -->
+      <section id="dashboardView" class="view-section active">
+        <!-- Hero Welcome -->
+        <div class="hero">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <div class="hero-tag">Temporada Primera División 2025</div>
+            <h2>¡Hola, Oviedista! Organiza los viajes de tu Peña</h2>
+            <p>Este prototipo facilita la gestión de desplazamientos para seguir al Real Oviedo cuando juega fuera. Registra tu peña, comparte las entradas asignadas con tus socios, calcula presupuestos automáticos y solicita cotizaciones en tiempo real a agencias locales de Oviedo.</p>
+            <button class="btn btn-accent" onclick="app.switchTab('calendar')">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+              Buscar Próximo Viaje
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Summary Stats Bar -->
+        <div class="stat-bar">
+          <div class="stat-widget">
+            <div class="stat-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-num" id="statPeñasCount">3</span>
+              <span class="stat-label">Peñas Activas</span>
+            </div>
+          </div>
+          <div class="stat-widget">
+            <div class="stat-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path>
+              </svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-num" id="statActiveTickets">0</span>
+              <span class="stat-label">Entradas Publicadas</span>
+            </div>
+          </div>
+          <div class="stat-widget">
+            <div class="stat-icon">
+              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-num" id="statPurchases">0</span>
+              <span class="stat-label">Ventas a Socios</span>
+            </div>
+          </div>
+          <div class="stat-widget">
+            <div class="stat-icon" style="background: rgba(212,175,55,0.15); border-color: rgba(212,175,55,0.3);">
+              <svg width="24" height="24" fill="none" stroke="var(--color-accent)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+              </svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-num" id="statNextDistance">--</span>
+              <span class="stat-label">Siguiente Distancia (km)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <!-- Next Outing Highlight -->
+          <div class="card col-8">
+            <div class="card-title-bar">
+              <h3>
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                Siguiente Partido como Visitante
+              </h3>
+              <span class="badge badge-gold" id="nextMatchStatus">Próximamente</span>
+            </div>
+            
+            <div class="next-trip-panel">
+              <div class="vs-block">
+                <div class="team-badge-large">
+                  <div class="team-logo-placeholder team-oviedo">RO</div>
+                  <strong style="text-align: center;">Real Oviedo</strong>
+                </div>
+                <div class="vs-divider">VS</div>
+                <div class="team-badge-large">
+                  <div class="team-logo-placeholder team-opponent" id="nextMatchOpponentLogo">??</div>
+                  <strong id="nextMatchOpponentName" style="text-align: center;">Rival</strong>
+                </div>
+              </div>
+
+              <div class="trip-metadata">
+                <div class="trip-meta-item">
+                  <span>Estadio y Ciudad</span>
+                  <span id="nextMatchLocation">Cargando...</span>
+                </div>
+                <div class="trip-meta-item">
+                  <span>Fecha</span>
+                  <span id="nextMatchDate">Cargando...</span>
+                </div>
+                <div class="trip-meta-item">
+                  <span>Distancia y Conectividad</span>
+                  <span id="nextMatchTravelSummary">Cargando...</span>
+                </div>
+                <div class="trip-meta-item">
+                  <span>Recomendación de Transporte</span>
+                  <span id="nextMatchRecom">Cargando...</span>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+                <button class="btn btn-primary" style="flex: 1;" id="btnNextTripBudget">
+                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                  Calcular Presupuesto Completo
+                </button>
+                <button class="btn btn-secondary" id="btnNextTripTickets">
+                  Comprar Entradas Socio
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Peñas Activas Sidebar -->
+          <div class="card col-4">
+            <div class="card-title-bar">
+              <h3>
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                </svg>
+                Peñas en la Plataforma
+              </h3>
+            </div>
+            
+            <div class="active-penaship" id="dashboardActivePeñasList">
+              <!-- Rendered dynamically -->
+            </div>
+            
+            <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem;" onclick="app.switchTab('registry')">
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
+              </svg>
+              Registrar Nueva Peña
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. AWAY CALENDAR VIEW -->
+      <section id="calendarView" class="view-section">
+        <div class="card">
+          <div class="card-title-bar">
+            <h2>Calendario de Partidos Fuera de Casa 2025</h2>
+            <span class="badge badge-blue">19 Desplazamientos</span>
+          </div>
+          <p style="color: var(--color-text-muted); margin-bottom: 1.5rem;">
+            Consulta la lista completa de rivales del Real Oviedo jugando fuera de casa. Revisa las distancias desde la capital asturiana y la disponibilidad de conexión directa desde el **Aeropuerto de Asturias (OVD)**. Haz clic en "Planear Viaje" en cualquier fila para cargar automáticamente los datos en el calculador y contactar con agencias.
+          </p>
+
+          <!-- Filter & Search Bar -->
+          <div class="filter-bar">
+            <div class="search-input-wrapper">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+              <input type="text" class="form-control" placeholder="Buscar por rival, ciudad o estadio..." id="calendarSearchInput">
+            </div>
+            
+            <div class="select-group" style="max-width: 450px;">
+              <button class="select-btn active" id="btnFilterAll" onclick="app.filterCalendar('all')">Todos</button>
+              <button class="select-btn" id="btnFilterNear" onclick="app.filterCalendar('near')">&lt; 400 km</button>
+              <button class="select-btn" id="btnFilterFar" onclick="app.filterCalendar('far')">&ge; 400 km</button>
+              <button class="select-btn" id="btnFilterFlight" onclick="app.filterCalendar('flight')">Con Vuelo</button>
+            </div>
+          </div>
+
+          <!-- Calendar Table -->
+          <div class="calendar-table-wrapper">
+            <table class="calendar-table">
+              <thead>
+                <tr>
+                  <th>Partido / Rival</th>
+                  <th>Fecha Estimada</th>
+                  <th>Estadio / Ciudad</th>
+                  <th>Distancia</th>
+                  <th>Vuelo Asturias (OVD)</th>
+                  <th>Acción</th>
+                </tr>
+              </thead>
+              <tbody id="calendarTableBody">
+                <!-- Rendered dynamically from MATCHES_2025 -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. FAN CLUB REGISTRY VIEW -->
+      <section id="registryView" class="view-section">
+        <div class="dashboard-grid">
+          <!-- Form Card -->
+          <div class="card col-8">
+            <div class="card-title-bar">
+              <h2>Registrar una Nueva Peña Azul</h2>
+            </div>
+            <p style="color: var(--color-text-muted); margin-bottom: 1.5rem;">
+              Registra tu peña oficial en el portal de desplazamientos. Al registrar tu peña, podrás publicar asignaciones de entradas para tus socios en partidos fuera de casa y enviar solicitudes de presupuestos conjuntos a las agencias autorizadas de Oviedo.
+            </p>
+
+            <form id="newPeñaForm" onsubmit="app.handlePeñaRegistration(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="peñaName">Nombre de la Peña *</label>
+                  <input type="text" class="form-control" id="peñaName" placeholder="Ej: Peña Azul Vetusta" required>
+                </div>
+                
+                <div class="form-group">
+                  <label>Avatar / Sigla Visual *</label>
+                  <div class="registry-avatar-select" id="avatarSelector">
+                    <div class="avatar-option selected" data-char="V">V</div>
+                    <div class="avatar-option" data-char="G">G</div>
+                    <div class="avatar-option" data-char="D">D</div>
+                    <div class="avatar-option" data-char="O">O</div>
+                    <div class="avatar-option" data-char="P">P</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="peñaYear">Año de Fundación *</label>
+                  <input type="number" class="form-control" id="peñaYear" min="1926" max="2026" value="2025" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="peñaSede">Sede (Dirección / Ciudad) *</label>
+                  <input type="text" class="form-control" id="peñaSede" placeholder="Ej: Sidrería El Desarme, Oviedo" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="peñaPresident">Presidente de la Peña *</label>
+                  <input type="text" class="form-control" id="peñaPresident" placeholder="Ej: Nacho Fernández" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="peñaMembers">Número de Socios Activos *</label>
+                  <input type="number" class="form-control" id="peñaMembers" min="1" value="120" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="peñaEmail">Email de Contacto Oficial *</label>
+                <input type="email" class="form-control" id="peñaEmail" placeholder="Ej: contacto@peñavetusta.com" required>
+              </div>
+
+              <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem;">
+                <button type="button" class="btn btn-secondary" onclick="app.switchTab('dashboard')">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Registrar Peña en la Plataforma</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Explanatory card -->
+          <div class="card col-4 registration-hero">
+            <div class="card-title-bar">
+              <h3>Ventajas del Registro</h3>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 1.25rem; font-size: 0.9rem;">
+              <div style="display: flex; gap: 0.75rem;">
+                <svg width="24" height="24" fill="none" stroke="var(--color-accent)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <div>
+                  <strong>Control Total de Entradas:</strong>
+                  <p style="color: var(--color-text-muted); font-size: 0.8rem;">Sube el cupo de entradas que te otorga el club y gestiona la asignación para tus socios de forma segura.</p>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 0.75rem;">
+                <svg width="24" height="24" fill="none" stroke="var(--color-accent)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <div>
+                  <strong>Presupuestos Masivos:</strong>
+                  <p style="color: var(--color-text-muted); font-size: 0.8rem;">Pide cotizaciones automáticas para buses de 55 plazas o paquetes de avión agrupando a toda la peña en Oviedo.</p>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 0.75rem;">
+                <svg width="24" height="24" fill="none" stroke="var(--color-accent)" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <div>
+                  <strong>Integración con Bizum y Tarjeta:</strong>
+                  <p style="color: var(--color-text-muted); font-size: 0.8rem;">Tus socios pueden realizar el pago simulado directamente en la plataforma, agilizando la tesorería de la peña.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. PUBLISH TICKETS VIEW -->
+      <section id="publishView" class="view-section">
+        <div class="card" style="max-width: 800px; margin: 0 auto;">
+          <div class="card-title-bar">
+            <h2>Publicar Entradas de Partido para Socios</h2>
+          </div>
+          <p style="color: var(--color-text-muted); margin-bottom: 1.5rem;">
+            ¿El Real Oviedo ha asignado un cupo de entradas de zona visitante a tu peña para el próximo partido? Publícalo aquí. Tus socios de la peña podrán entrar y comprar directamente su entrada para el desplazamiento de manera digital.
+          </p>
+
+          <form id="publishTicketsForm" onsubmit="app.handleTicketPublish(event)">
+            <div class="form-group">
+              <label for="publishPeñaSelector">Selecciona tu Peña Oficial *</label>
+              <select class="form-control" id="publishPeñaSelector" required>
+                <!-- Rendered dynamically -->
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="publishMatchSelector">Partido Fuera de Casa *</label>
+                <select class="form-control" id="publishMatchSelector" onchange="app.updatePublishPriceSuggest()" required>
+                  <!-- Rendered dynamically -->
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="publishTicketCount">Cantidad de Entradas Asignadas *</label>
+                <input type="number" class="form-control" id="publishTicketCount" min="1" max="500" value="50" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="publishTicketPrice">Precio por Entrada (€) *</label>
+                <input type="number" class="form-control" id="publishTicketPrice" min="1" value="30" required>
+                <small style="color: var(--color-text-muted); font-size: 0.75rem;">Sugerencia de zona visitante pactada por La Liga.</small>
+              </div>
+
+              <div class="form-group">
+                <label for="publishDeadline">Fecha Límite de Reserva *</label>
+                <input type="date" class="form-control" id="publishDeadline" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="publishInstructions">Instrucciones Especiales para los Socios</label>
+              <textarea class="form-control" id="publishInstructions" rows="3" placeholder="Ej: Recogida física el jueves en la sede. Imprescindible portar carnet de peñista..."></textarea>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem;">
+              <button type="button" class="btn btn-secondary" onclick="app.switchTab('dashboard')">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Publicar Entradas en el Portal de Socios</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- 5. MEMBER SHOP VIEW -->
+      <section id="shopView" class="view-section">
+        <div class="card">
+          <div class="card-title-bar">
+            <h2>Portal del Socio: Compra de Entradas y Reservas</h2>
+            <span class="badge badge-success" id="activeListingsCount">0 Listados Activos</span>
+          </div>
+          <p style="color: var(--color-text-muted); margin-bottom: 1.5rem;">
+            Aquí los socios peñistas pueden consultar la asignación de entradas de su peña y comprar las entradas. Tras formalizar el pago simulado, se generará el voucher de entrada del partido y la recomendación inteligente de transporte según las reglas de desplazamiento de la federación de peñas.
+          </p>
+
+          <!-- Selection of active Peña to filter listings -->
+          <div class="form-group" style="max-width: 400px; margin-bottom: 2rem;">
+            <label for="shopPeñaFilter">Selecciona tu Peña para ver tus Entradas Asignadas</label>
+            <select class="form-control" id="shopPeñaFilter" onchange="app.renderShopListings()">
+              <!-- Dynamic -->
+            </select>
+          </div>
+
+          <!-- Shop listings grid -->
+          <h3 style="margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem;">
+            Entradas Disponibles para tu Peña
+          </h3>
+          <div class="shop-grid" id="shopGrid">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Section to show already booked tickets -->
+        <div class="card">
+          <div class="card-title-bar">
+            <h3>Mis Entradas Adquiridas</h3>
+          </div>
+          <div class="calendar-table-wrapper">
+            <table class="calendar-table">
+              <thead>
+                <tr>
+                  <th>Código de Reserva</th>
+                  <th>Socio / ID</th>
+                  <th>Peña</th>
+                  <th>Partido</th>
+                  <th>Entradas</th>
+                  <th>Precio Total</th>
+                  <th>Voucher Digital</th>
+                </tr>
+              </thead>
+              <tbody id="bookingsTableBody">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. TRAVEL AGENCY SEARCH & BUDGETS VIEW -->
+      <section id="agencyView" class="view-section">
+        <div class="calculator-panel">
+          
+          <!-- Parameters selector side -->
+          <div class="card">
+            <div class="card-title-bar">
+              <h3>Configurador de Desplazamiento</h3>
+            </div>
+            
+            <div class="form-group">
+              <label for="budgetMatchSelector">Selecciona el Partido de Destino</label>
+              <select class="form-control" id="budgetMatchSelector" onchange="app.calculateDynamicBudget()">
+                <!-- Dynamic calendar values -->
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="budgetTravelers">Cantidad de Viajeros (Socios)</label>
+                <input type="number" class="form-control" id="budgetTravelers" min="1" value="4" onchange="app.calculateDynamicBudget()" onkeyup="app.calculateDynamicBudget()">
+              </div>
+
+              <div class="form-group">
+                <label>Modo de Transporte Principal</label>
+                <div class="select-group">
+                  <button class="select-btn active" id="btnTransportCar" onclick="app.setTransportMode('car')">Coche</button>
+                  <button class="select-btn" id="btnTransportBus" onclick="app.setTransportMode('bus')">Bus</button>
+                  <button class="select-btn" id="btnTransportPlane" onclick="app.setTransportMode('plane')">Avión</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Optional parameters -->
+            <div class="form-group" style="margin-top: 1rem;">
+              <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                <input type="checkbox" id="budgetIncludeHotel" onchange="app.calculateDynamicBudget()" style="width: 18px; height: 18px; cursor: pointer;">
+                <span>Incluir 1 noche de Alojamiento (€45 por persona/noche)</span>
+              </label>
+            </div>
+
+            <!-- Dynamic Oviedo Travel Rules Alert Banner -->
+            <div class="flight-eligibility-banner" id="flightBanner">
+              <!-- Rendered dynamically based on match selected -->
+            </div>
+          </div>
+
+          <!-- Dynamic Comparison Results side -->
+          <div class="card">
+            <div class="card-title-bar">
+              <h3>Comparador de Presupuestos desde Oviedo</h3>
+              <span class="badge badge-gold">Estimaciones Prototipo</span>
+            </div>
+            
+            <div class="comparison-card" id="comparisonWidget">
+              <!-- Rendered dynamically: comparison between Car, Bus, and Plane -->
+            </div>
+
+            <div style="margin-top: 1.5rem; border-top: 1px dashed rgba(255,255,255,0.08); padding-top: 1.5rem;">
+              <h4>Pide un Presupuesto Firme a Agencias de Oviedo</h4>
+              <p style="color: var(--color-text-muted); font-size: 0.8rem; margin-bottom: 1rem;">
+                Envía formalmente los datos de este desplazamiento a las agencias locales concertadas de Oviedo. Ellos devolverán un presupuesto grupal detallado para autobús o billetes aéreos.
+              </p>
+              
+              <div class="agencies-list">
+                <!-- Agency 1 -->
+                <div class="agency-card">
+                  <div class="agency-card-header">
+                    <h4>AsturViajes Oviedo</h4>
+                    <span>
+                      <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      </svg>
+                      C/ Uría, 12, Oviedo
+                    </span>
+                  </div>
+                  <p class="agency-card-details">Especialistas en autobuses de peñas a toda la península.</p>
+                  <button class="btn btn-secondary btn-accent" style="font-size: 0.8rem; padding: 0.5rem 1rem;" onclick="app.sendAgencyBudgetRequest('AsturViajes Oviedo')">Solicitar Presupuesto</button>
+                </div>
+
+                <!-- Agency 2 -->
+                <div class="agency-card">
+                  <div class="agency-card-header">
+                    <h4>Halcón Viajes Oviedo</h4>
+                    <span>
+                      <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      </svg>
+                      C/ Cervantes, 5, Oviedo
+                    </span>
+                  </div>
+                  <p class="agency-card-details">Paquetes chárter especiales de avión si hay conexión desde Asturias.</p>
+                  <button class="btn btn-secondary btn-accent" style="font-size: 0.8rem; padding: 0.5rem 1rem;" onclick="app.sendAgencyBudgetRequest('Halcón Viajes')">Solicitar Presupuesto</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Request Progress widget overlay/section -->
+        <div class="progress-widget" id="agencyProgressWidget" style="max-width: 600px; margin: 2rem auto 0 auto;">
+          <div class="spinner"></div>
+          <div>
+            <h3 style="color: var(--color-accent); font-size: 1.3rem; margin-bottom: 0.25rem;">Procesando Solicitud de Presupuesto Grupal</h3>
+            <p style="color: var(--color-text-muted); font-size: 0.85rem;" id="progressCurrentStatus">Conectando con el servidor de la agencia de Oviedo...</p>
+          </div>
+
+          <div class="progress-steps">
+            <div class="progress-step done" id="step1">✓ Generando itinerario de viaje</div>
+            <div class="progress-step active" id="step2">Calculando distancias y peajes</div>
+            <div class="progress-step" id="step3">Enviando desglose detallado a la agencia</div>
+            <div class="progress-step" id="step4">Confirmando recepción de cotización</div>
+          </div>
+        </div>
+
+        <!-- Success Log display for Requests -->
+        <div class="card" id="agencyRequestsLogCard" style="display: none; margin-top: 2rem;">
+          <div class="card-title-bar">
+            <h3>Historial de Solicitudes a Agencias</h3>
+          </div>
+          <div class="calendar-table-wrapper">
+            <table class="calendar-table">
+              <thead>
+                <tr>
+                  <th>Fecha/Hora</th>
+                  <th>Agencia</th>
+                  <th>Partido / Destino</th>
+                  <th>Pasajeros</th>
+                  <th>Transporte</th>
+                  <th>Coste Estimado Total</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody id="agencyRequestsLogBody">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-content">
+        <div style="text-align: left;">
+          <strong>PeñaViajes Oviedo 2025</strong>
+          <p style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.25rem;">Prototipo de Coordinación de Desplazamientos para las Peñas del Real Oviedo.</p>
+        </div>
+        <div>
+          <span style="font-weight: 600; color: var(--color-accent);">Federación de Peñas del Real Oviedo</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- CREDIT CARD PAYMENT MODAL -->
+  <div class="modal-overlay" id="paymentModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Pago Seguro de Entradas</h3>
+        <button class="modal-close-btn" onclick="app.closePaymentModal()">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Visual Credit Card Card -->
+        <div class="visual-card-wrapper">
+          <div class="visual-credit-card">
+            <div class="visual-card-chip"></div>
+            <!-- Mock visa label -->
+            <div class="visual-card-logo" style="font-family: var(--font-heading); font-weight: 800; font-style: italic; font-size: 1.3rem;">RO PAY</div>
+            <div class="visual-card-number" id="visualCardNumDisplay">•••• •••• •••• ••••</div>
+            <div class="visual-card-footer">
+              <div class="visual-card-holder" id="visualCardHolderDisplay">NOMBRE APELLIDO</div>
+              <div style="font-family: monospace;" id="visualCardExpDisplay">MM/AA</div>
+            </div>
+          </div>
+        </div>
+
+        <form id="paymentForm" onsubmit="app.processPayment(event)">
+          <!-- Billing Details -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="billingName">Nombre Completo del Socio *</label>
+              <input type="text" class="form-control" id="billingName" placeholder="Ej: Nacho Fernández" required onkeyup="app.updateVisualCardHolder(this.value)">
+            </div>
+            <div class="form-group">
+              <label for="billingMemberId">ID de Socio de la Peña *</label>
+              <input type="text" class="form-control" id="billingMemberId" placeholder="Ej: V-239" required>
+            </div>
+          </div>
+
+          <!-- Purchase Details (read only count and total) -->
+          <div class="form-row" style="background: rgba(255,255,255,0.02); padding: 0.75rem; border-radius: var(--border-radius-sm); border: 1px solid var(--glass-border); margin-bottom: 1.25rem;">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label style="margin-bottom: 0.15rem;">Entradas a Adquirir</label>
+              <input type="number" class="form-control" id="paymentTicketCount" value="1" min="1" max="10" style="background: transparent; border: none; font-weight: bold; font-size: 1.1rem; padding: 0;" onchange="app.updatePaymentTotals()" onkeyup="app.updatePaymentTotals()">
+            </div>
+            <div class="form-group" style="margin-bottom: 0; text-align: right;">
+              <label style="margin-bottom: 0.15rem;">Importe Total a Pagar</label>
+              <div style="font-size: 1.3rem; font-weight: 800; color: var(--color-accent);" id="paymentTotalDisplay">0.00 €</div>
+            </div>
+          </div>
+
+          <!-- Payment Methods selection -->
+          <div class="form-group">
+            <label>Forma de Pago Simulado</label>
+            <div class="select-group" style="margin-bottom: 1rem;">
+              <button type="button" class="select-btn active" id="btnPayCard" onclick="app.setPaymentMethod('card')">Tarjeta</button>
+              <button type="button" class="select-btn" id="btnPayBizum" onclick="app.setPaymentMethod('bizum')">Bizum</button>
+            </div>
+          </div>
+
+          <!-- Card Form details -->
+          <div id="cardPaymentDetails">
+            <div class="form-group">
+              <label for="cardNum">Número de Tarjeta *</label>
+              <input type="text" class="form-control" id="cardNum" placeholder="4540 1234 5678 9012" maxlength="19" required onkeyup="app.formatAndShowCardNumber(this)">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cardExpiry">Fecha de Caducidad *</label>
+                <input type="text" class="form-control" id="cardExpiry" placeholder="MM/AA" maxlength="5" required onkeyup="app.updateVisualCardExp(this.value)">
+              </div>
+              <div class="form-group">
+                <label for="cardCvv">CVV *</label>
+                <input type="text" class="form-control" id="cardCvv" placeholder="123" maxlength="3" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bizum Form details -->
+          <div id="bizumPaymentDetails" style="display: none;">
+            <div class="form-group">
+              <label for="bizumPhone">Número de Teléfono Bizum *</label>
+              <input type="text" class="form-control" id="bizumPhone" placeholder="600 000 000" maxlength="9">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" id="btnConfirmPayment">
+            Confirmar y Abonar con RO PAY
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS TICKET VOUCHER MODAL -->
+  <div class="modal-overlay" id="voucherModal">
+    <div class="modal-card" style="max-width: 460px;">
+      <div class="modal-header" style="background: var(--color-success);">
+        <h3>¡Transacción Exitosa!</h3>
+        <button class="modal-close-btn" onclick="app.closeVoucherModal()">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" style="padding: 1.5rem 1rem;">
+        <div class="voucher-container">
+          
+          <div class="boarding-pass" id="boardingPassToPrint">
+            <div class="boarding-header">
+              <h4>Tarjeta de Embarque Peña</h4>
+              <div style="font-size: 0.85rem; font-weight: bold;" id="boardingVoucherCode">RO-5249</div>
+            </div>
+            
+            <div class="boarding-content">
+              <div class="boarding-flight-line">
+                <div class="boarding-airport">
+                  <span class="boarding-airport-code">OVD</span>
+                  <span class="boarding-airport-name">Oviedo/Asturias</span>
+                </div>
+                
+                <div class="boarding-plane-icon" id="boardingPassIcon">✈</div>
+                
+                <div class="boarding-airport" style="text-align: right;">
+                  <span class="boarding-airport-code" id="boardingDestCode">MAD</span>
+                  <span class="boarding-airport-name" id="boardingDestCity">Madrid</span>
+                </div>
+              </div>
+
+              <div class="boarding-details-grid">
+                <div class="boarding-meta">
+                  <span class="boarding-meta-label">Peñista / Socio</span>
+                  <span class="boarding-meta-value" id="boardingSocioName">Nacho Fernández</span>
+                </div>
+                <div class="boarding-meta">
+                  <span class="boarding-meta-label">Peña Oficial</span>
+                  <span class="boarding-meta-value" id="boardingPeñaName">Peña Vetusta</span>
+                </div>
+                <div class="boarding-meta">
+                  <span class="boarding-meta-label">Partido Destino</span>
+                  <span class="boarding-meta-value" id="boardingMatchName">Real Madrid vs Real Oviedo</span>
+                </div>
+                <div class="boarding-meta">
+                  <span class="boarding-meta-label">Fecha Partido</span>
+                  <span class="boarding-meta-value" id="boardingMatchDate">15 Ene 2025</span>
+                </div>
+                <div class="boarding-meta">
+                  <span class="boarding-meta-label">Cantidad</span>
+                  <span class="boarding-meta-value" id="boardingTicketCount">1 Entrada</span>
+                </div>
+                <div class="boarding-meta">
+                  <span class="boarding-meta-label">Recomendación Viaje</span>
+                  <span class="boarding-meta-value" style="color: var(--color-primary-light);" id="boardingTravelRecom">Vuelo Directo</span>
+                </div>
+              </div>
+
+              <!-- Barcode / QR Section -->
+              <div class="boarding-barcode">
+                <div class="qr-code-placeholder">
+                  <svg width="90" height="90" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Standard vector QR code layout -->
+                    <rect x="0" y="0" width="25" height="25" fill="#111827"/>
+                    <rect x="5" y="5" width="15" height="15" fill="#fff"/>
+                    <rect x="75" y="0" width="25" height="25" fill="#111827"/>
+                    <rect x="80" y="5" width="15" height="15" fill="#fff"/>
+                    <rect x="0" y="75" width="25" height="25" fill="#111827"/>
+                    <rect x="5" y="80" width="15" height="15" fill="#fff"/>
+                    <!-- QR data noise points -->
+                    <rect x="35" y="10" width="10" height="10" fill="#111827"/>
+                    <rect x="50" y="5" width="5" height="10" fill="#111827"/>
+                    <rect x="60" y="15" width="10" height="5" fill="#111827"/>
+                    <rect x="30" y="30" width="20" height="20" fill="#111827"/>
+                    <rect x="10" y="40" width="15" height="15" fill="#111827"/>
+                    <rect x="60" y="40" width="25" height="25" fill="#111827"/>
+                    <rect x="40" y="60" width="10" height="10" fill="#111827"/>
+                    <rect x="30" y="80" width="20" height="15" fill="#111827"/>
+                    <rect x="65" y="80" width="5" height="10" fill="#111827"/>
+                    <rect x="85" y="50" width="10" height="20" fill="#111827"/>
+                  </svg>
+                </div>
+                <small style="color: #6b7280; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em;">Código QR válido de Acceso Visitante</small>
+              </div>
+
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; width: 100%; max-width: 420px; margin-top: 1.5rem;">
+            <button class="btn btn-secondary" style="flex: 1;" onclick="app.closeVoucherModal()">
+              Cerrar
+            </button>
+            <button class="btn btn-primary" style="flex: 1;" onclick="window.print()">
+              Imprimir / PDF
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
